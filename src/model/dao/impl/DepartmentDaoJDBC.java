@@ -144,13 +144,13 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		
 		try {
 			st = conn.prepareStatement(
-					"SELECT * FROM department ORDER BY Name");
+					"SELECT * FROM department ORDER BY Id");
 			
 			rs = st.executeQuery();
 			
 			List<Department> list = new ArrayList<>();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				Department obj = new Department();
 				obj.setId(rs.getInt("Id"));
 				obj.setName(rs.getString("Name"));
@@ -158,6 +158,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 				
 			}
 			return list;
+		
+
 			
 			
 		}catch(SQLException e) {
