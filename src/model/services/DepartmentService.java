@@ -12,8 +12,7 @@ public class DepartmentService {
 	
 	public List <Department> findAll(){
 		return dao.findAll();
-		
-		
+				
 		/*
 		 * List<Department> list = new ArrayList<>(); list.add(new Department(1,
 		 * "Avulso1")); list.add(new Department(2, "Avulso2")); list.add(new
@@ -23,6 +22,14 @@ public class DepartmentService {
 			//return list;
 		
 		
+	}
+	public void saveOrUpdate(Department obj) {
+		if (obj.getId() == null) {
+			dao.insert(obj);
+		}
+		else {
+			dao.update(obj);
+		}
 	}
 	
 
